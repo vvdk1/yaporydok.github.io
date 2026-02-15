@@ -1,0 +1,1715 @@
+v, [15.02.2026 21:41]
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ООО «Я-ПОРЯДОК» — Будущее благоустройства</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #0f172a;
+            --primary-light: #1e293b;
+            --accent: #10b981;
+            --accent-light: #34d399;
+            --accent-dark: #059669;
+            --warning: #f59e0b;
+            --danger: #ef4444;
+            --info: #3b82f6;
+            --text: #0f172a;
+            --text-light: #64748b;
+            --bg: #f8fafc;
+            --white: #ffffff;
+            --gradient-1: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --gradient-2: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            --gradient-3: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+            --shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+            --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1);
+            --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1);
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 700;
+        }
+
+        /* Header */
+        .header {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            transition: all 0.3s;
+        }
+
+        .header.scrolled {
+            box-shadow: var(--shadow-lg);
+            background: rgba(255, 255, 255, 0.95);
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 80px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+        }
+
+        .logo-icon {
+            width: 48px;
+            height: 48px;
+            background: var(--gradient-1);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s;
+        }
+
+        .logo:hover .logo-icon {
+            transform: rotate(-10deg) scale(1.1);
+        }
+
+        .logo-text {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            letter-spacing: -0.5px;
+        }
+
+        .logo-text span {
+            color: var(--accent);
+        }
+
+        .nav {
+            display: flex;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .nav a {
+            text-decoration: none;
+            color: var(--text-light);
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: color 0.3s;
+            position: relative;
+        }
+
+        .nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent);
+            transition: width 0.3s;
+        }
+
+        .nav a:hover {
+            color: var(--primary);
+        }
+
+        .nav a:hover::after {
+            width: 100%;
+        }
+
+        .header-actions {
+
+v, [15.02.2026 21:41]
+display: flex;
+            gap: 16px;
+            align-items: center;
+        }
+
+        .btn {
+            padding: 12px 24px;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: all 0.3s;
+            cursor: pointer;
+            border: none;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: white;
+            box-shadow: 0 4px 6px -1px rgba(15, 23, 42, 0.2);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px -5px rgba(15, 23, 42, 0.3);
+        }
+
+        .btn-accent {
+            background: var(--accent);
+            color: white;
+        }
+
+        .btn-accent:hover {
+            background: var(--accent-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px -5px rgba(16, 185, 129, 0.3);
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--primary);
+            color: var(--primary);
+        }
+
+        .btn-outline:hover {
+            background: var(--primary);
+            color: white;
+        }
+
+        /* Hero */
+        .hero {
+            padding: 160px 0 100px;
+            background: linear-gradient(135deg, #f0fdf4 0%, #ecfdf5 50%, #ffffff 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 800px;
+            height: 800px;
+            background: radial-gradient(circle, rgba(16, 185, 129, 0.1) 0%, transparent 70%);
+            animation: pulse 4s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 0.5; }
+            50% { transform: scale(1.1); opacity: 0.8; }
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(16, 185, 129, 0.1);
+            color: var(--accent-dark);
+            padding: 8px 16px;
+            border-radius: 50px;
+            font-size: 0.875rem;
+            font-weight: 600;
+            margin-bottom: 24px;
+            border: 1px solid rgba(16, 185, 129, 0.2);
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            line-height: 1.1;
+            margin-bottom: 24px;
+            color: var(--primary);
+            letter-spacing: -2px;
+        }
+
+        .hero h1 span {
+            background: var(--gradient-1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            color: var(--text-light);
+            margin-bottom: 40px;
+            max-width: 540px;
+            line-height: 1.7;
+        }
+
+        .hero-stats {
+            display: flex;
+            gap: 40px;
+            margin-top: 48px;
+            padding-top: 32px;
+            border-top: 1px solid rgba(0,0,0,0.1);
+        }
+
+        .hero-stat {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .hero-stat-number {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            line-height: 1;
+        }
+
+        .hero-stat-label {
+            font-size: 0.875rem;
+            color: var(--text-light);
+            margin-top: 4px;
+        }
+
+        .hero-visual {
+            position: relative;
+        }
+
+        .hero-image {
+            width: 100%;
+            height: 500px;
+            background: var(--gradient-1);
+            border-radius: 32px;
+
+v, [15.02.2026 21:41]
+position: relative;
+            overflow: hidden;
+            box-shadow: var(--shadow-xl);
+        }
+
+        .hero-image::before {
+            content: '🌳';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 8rem;
+            opacity: 0.3;
+        }
+
+        .floating-card {
+            position: absolute;
+            background: white;
+            padding: 20px;
+            border-radius: 16px;
+            box-shadow: var(--shadow-xl);
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .floating-card-1 {
+            top: 20%;
+            left: -30px;
+            animation-delay: 0s;
+        }
+
+        .floating-card-2 {
+            bottom: 20%;
+            right: -20px;
+            animation-delay: 2s;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        /* Services */
+        .services {
+            padding: 120px 0;
+        }
+
+        .section-header {
+            text-align: center;
+            max-width: 640px;
+            margin: 0 auto 64px;
+        }
+
+        .section-tag {
+            display: inline-block;
+            background: rgba(99, 102, 241, 0.1);
+            color: #6366f1;
+            padding: 6px 16px;
+            border-radius: 50px;
+            font-size: 0.875rem;
+            font-weight: 600;
+            margin-bottom: 16px;
+        }
+
+        .section-title {
+            font-size: 3rem;
+            color: var(--primary);
+            margin-bottom: 16px;
+            letter-spacing: -1px;
+        }
+
+        .section-subtitle {
+            font-size: 1.125rem;
+            color: var(--text-light);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 24px;
+        }
+
+        .service-card {
+            background: white;
+            border-radius: 24px;
+            padding: 32px;
+            transition: all 0.4s;
+            cursor: pointer;
+            border: 2px solid transparent;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: var(--gradient-1);
+            transform: scaleX(0);
+            transition: transform 0.3s;
+        }
+
+        .service-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-xl);
+            border-color: rgba(99, 102, 241, 0.2);
+        }
+
+        .service-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .service-card.selected {
+            border-color: var(--accent);
+            background: #f0fdf4;
+        }
+
+        .service-card.selected::before {
+            background: var(--accent);
+            transform: scaleX(1);
+        }
+
+        .service-icon {
+            width: 64px;
+            height: 64px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            margin-bottom: 24px;
+            transition: transform 0.3s;
+        }
+
+        .service-card:hover .service-icon {
+            transform: scale(1.1) rotate(-5deg);
+        }
+
+        .service-title {
+            font-size: 1.5rem;
+            margin-bottom: 12px;
+            color: var(--primary);
+        }
+
+        .service-desc {
+            color: var(--text-light);
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+
+        .service-features {
+            list-style: none;
+            margin-bottom: 24px;
+        }
+
+        .service-features li {
+            padding: 6px 0;
+            padding-left: 24px;
+            position: relative;
+            color: var(--text-light);
+
+v, [15.02.2026 21:41]
+font-size: 0.95rem;
+        }
+
+        .service-features li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+            font-weight: bold;
+        }
+
+        .service-price {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            display: flex;
+            align-items: baseline;
+            gap: 4px;
+        }
+
+        .service-price span {
+            font-size: 0.875rem;
+            color: var(--text-light);
+            font-weight: 400;
+        }
+
+        /* Team Section */
+        .team {
+            padding: 120px 0;
+            background: white;
+            position: relative;
+        }
+
+        .team::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(0,0,0,0.1), transparent);
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 24px;
+            margin-top: 64px;
+        }
+
+        .team-card {
+            background: var(--bg);
+            border-radius: 24px;
+            overflow: hidden;
+            transition: all 0.4s;
+            position: relative;
+        }
+
+        .team-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-xl);
+        }
+
+        .team-image {
+            height: 280px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .team-image::before {
+            content: attr(data-emoji);
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 6rem;
+            opacity: 0.5;
+        }
+
+        .team-card:nth-child(2n) .team-image { background: var(--gradient-2); }
+        .team-card:nth-child(3n) .team-image { background: var(--gradient-3); }
+        .team-card:nth-child(4n) .team-image { background: linear-gradient(135deg, #fa709a 0%, #fee140 100%); }
+        .team-card:nth-child(5n) .team-image { background: linear-gradient(135deg, #30cfd0 0%, #330867 100%); }
+
+        .team-info {
+            padding: 24px;
+        }
+
+        .team-name {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 4px;
+        }
+
+        .team-role {
+            color: var(--accent);
+            font-weight: 600;
+            font-size: 0.875rem;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .team-role::before {
+            content: '◆';
+            font-size: 0.6rem;
+        }
+
+        .team-desc {
+            font-size: 0.9rem;
+            color: var(--text-light);
+            line-height: 1.5;
+        }
+
+        .team-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 16px;
+        }
+
+        .team-tag {
+            background: white;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            color: var(--text-light);
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+
+        /* Order Section */
+        .order {
+            padding: 120px 0;
+            background: linear-gradient(135deg, #f0fdf4 0%, #ffffff 100%);
+            position: relative;
+        }
+
+        .order-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 64px;
+            align-items: start;
+        }
+
+        .order-form-wrapper {
+            background: white;
+            padding: 48px;
+            border-radius: 32px;
+            box-shadow: var(--shadow-xl);
+        }
+
+        .form-group {
+            margin-bottom: 24px;
+        }
+
+        .
+
+v, [15.02.2026 21:41]
+form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--primary);
+            font-size: 0.9rem;
+        }
+
+        input, textarea, select {
+            width: 100%;
+            padding: 14px 18px;
+            border: 2px solid #e2e8f0;
+            border-radius: 12px;
+            font-size: 1rem;
+            transition: all 0.3s;
+            font-family: inherit;
+            background: white;
+        }
+
+        input:focus, textarea:focus, select:focus {
+            outline: none;
+            border-color: var(--accent);
+            box-shadow: 0 0 0 4px rgba(16, 185, 129, 0.1);
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .selected-services {
+            background: linear-gradient(135deg, #f0fdf4 0%, #ecfdf5 100%);
+            border: 2px solid var(--accent);
+            border-radius: 16px;
+            padding: 20px;
+            margin-bottom: 24px;
+            display: none;
+        }
+
+        .selected-services.active {
+            display: block;
+            animation: slideDown 0.3s ease;
+        }
+
+        @keyframes slideDown {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .selected-title {
+            font-weight: 600;
+            color: var(--accent-dark);
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .selected-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .selected-tag {
+            background: white;
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 0.875rem;
+            color: var(--accent-dark);
+            font-weight: 500;
+            border: 1px solid var(--accent-light);
+        }
+
+        .order-info {
+            padding-top: 24px;
+        }
+
+        .order-info h3 {
+            font-size: 2rem;
+            margin-bottom: 24px;
+            color: var(--primary);
+        }
+
+        .benefit-list {
+            list-style: none;
+            margin-bottom: 32px;
+        }
+
+        .benefit-list li {
+            padding: 16px 0;
+            padding-left: 40px;
+            position: relative;
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+            font-size: 1.05rem;
+        }
+
+        .benefit-list li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            width: 28px;
+            height: 28px;
+            background: var(--accent);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.875rem;
+            font-weight: bold;
+        }
+
+        /* Requisites */
+        .requisites {
+            padding: 120px 0;
+            background: white;
+        }
+
+        .req-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 24px;
+            margin-top: 48px;
+        }
+
+        .req-card {
+            background: var(--bg);
+            padding: 32px;
+            border-radius: 20px;
+            border-left: 4px solid var(--accent);
+            transition: all 0.3s;
+        }
+
+        .req-card:hover {
+            transform: translateX(8px);
+            box-shadow: var(--shadow);
+        }
+
+        .req-label {
+            font-size: 0.875rem;
+            color: var(--text-light);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+
+        .req-value {
+            font-size: 1.125rem;
+            font-weight: 700;
+            color: var(--primary);
+            word-break: break-word;
+        }
+
+        /* Footer */
+        .footer {
+
+v, [15.02.2026 21:41]
+background: var(--primary);
+            color: white;
+            padding: 80px 0 40px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 48px;
+            margin-bottom: 64px;
+        }
+
+        .footer-brand .logo-text {
+            color: white;
+            font-size: 1.75rem;
+            margin-bottom: 16px;
+        }
+
+        .footer-brand p {
+            color: rgba(255,255,255,0.7);
+            line-height: 1.7;
+            margin-bottom: 24px;
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 12px;
+        }
+
+        .social-link {
+            width: 44px;
+            height: 44px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            color: white;
+            font-size: 1.25rem;
+            transition: all 0.3s;
+        }
+
+        .social-link:hover {
+            background: var(--accent);
+            transform: translateY(-4px);
+        }
+
+        .footer-title {
+            font-size: 1.125rem;
+            margin-bottom: 24px;
+            color: white;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+
+        .footer-links a {
+            color: rgba(255,255,255,0.7);
+            text-decoration: none;
+            transition: color 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .footer-links a:hover {
+            color: white;
+        }
+
+        .footer-contact p {
+            color: rgba(255,255,255,0.7);
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 32px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 16px;
+            color: rgba(255,255,255,0.5);
+            font-size: 0.875rem;
+        }
+
+        /* Success Message */
+        .success-message {
+            display: none;
+            background: linear-gradient(135deg, var(--accent) 0%, var(--accent-dark) 100%);
+            color: white;
+            padding: 32px;
+            border-radius: 16px;
+            text-align: center;
+            margin-top: 24px;
+            animation: slideUp 0.5s ease;
+        }
+
+        .success-message.active {
+            display: block;
+        }
+
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Mobile */
+        @media (max-width: 1024px) {
+            .hero-grid,
+            .order-container {
+                grid-template-columns: 1fr;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .nav {
+                display: none;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .team-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header class="header" id="header">
+        <div class="container">
+            <div class="header-content">
+                <a href="#" class="logo">
+                    <div class="logo-icon">🌿</div>
+                    <div class="logo-text">Я-<span>ПОРЯДОК</span></div>
+                </a>
+
+v, [15.02.2026 21:41]
+<nav class="nav">
+                    <a href="#services">Услуги</a>
+                    <a href="#team">Команда</a>
+                    <a href="#order">Заявка</a>
+                    <a href="#requisites">Реквизиты</a>
+                    <a href="#contacts">Контакты</a>
+                </nav>
+
+                <div class="header-actions">
+                    <a href="tel:+78001234567" class="btn btn-outline">📞 Позвонить</a>
+                    <a href="#order" class="btn btn-primary">Оставить заявку</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-grid">
+                <div class="hero-content">
+                    <div class="hero-badge">
+                        <span>🚀</span>
+                        <span>Работаем с 2017 года</span>
+                    </div>
+                    <h1>Будущее <span>благоустройства</span> уже здесь</h1>
+                    <p>Современные решения для озеленения, благоустройства и ухода за территориями. Цифровые технологии, экологичность и профессиональный подход.</p>
+                    <div class="hero-actions">
+                        <a href="#order" class="btn btn-accent" style="padding: 16px 32px; font-size: 1.1rem;">
+                            Рассчитать стоимость →
+                        </a>
+                        <a href="#team" class="btn btn-outline" style="margin-left: 16px;">
+                            Наша команда
+                        </a>
+                    </div>
+                    
+                    <div class="hero-stats">
+                        <div class="hero-stat">
+                            <span class="hero-stat-number">500+</span>
+                            <span class="hero-stat-label">Проектов</span>
+                        </div>
+                        <div class="hero-stat">
+                            <span class="hero-stat-number">20</span>
+                            <span class="hero-stat-label">Специалистов</span>
+                        </div>
+                        <div class="hero-stat">
+                            <span class="hero-stat-number">7</span>
+                            <span class="hero-stat-label">Лет опыта</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="hero-visual">
+                    <div class="hero-image"></div>
+                    <div class="floating-card floating-card-1">
+                        <div style="font-size: 2rem; margin-bottom: 8px;">⭐</div>
+                        <div style="font-weight: 700; color: var(--primary);">4.9/5</div>
+                        <div style="font-size: 0.875rem; color: var(--text-light);">Рейтинг клиентов</div>
+                    </div>
+                    <div class="floating-card floating-card-2">
+                        <div style="font-size: 2rem; margin-bottom: 8px;">⚡</div>
+                        <div style="font-weight: 700; color: var(--primary);">2 часа</div>
+                        <div style="font-size: 0.875rem; color: var(--text-light);">Среднее время отклика</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services -->
+    <section class="services" id="services">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Услуги</span>
+                <h2 class="section-title">Цифровое благоустройство</h2>
+                <p class="section-subtitle">Выберите услуги — мы рассчитаем точную стоимость с помощью ИИ-аналитики</p>
+            </div>
+
+            <div class="services-grid">
+                <div class="service-card" onclick="toggleService(this, 'Арбористика 2.0')">
+                    <div class="service-icon">🌲</div>
+                    <h3 class="service-title">Арбористика 2.0</h3>
+
+v, [15.02.2026 21:41]
+<p class="service-desc">Умная рубка деревьев с использованием дронов-обследователей и точечных расчётов</p>
+                    <ul class="service-features">
+                        <li>3D-сканирование кроны</li>
+                        <li>Безопасная валка</li>
+                        <li>Утилизация биомассы</li>
+                    </ul>
+                    <div class="service-price">от 2 500 ₽ <span>/дерево</span></div>
+                </div>
+
+                <div class="service-card" onclick="toggleService(this, 'Гео-газоны')">
+                    <div class="service-icon" style="background: var(--gradient-2);">🌾</div>
+                    <h3 class="service-title">Гео-газоны</h3>
+                    <p class="service-desc">Автоматический покос с GPS-маршрутизацией и анализом состояния травы</p>
+                    <ul class="service-features">
+                        <li>Роботизированная косилка</li>
+                        <li>Мульчирование online</li>
+                        <li>Эко-удобрения</li>
+                    </ul>
+                    <div class="service-price">от 45 ₽ <span>/м²</span></div>
+                </div>
+
+                <div class="service-card" onclick="toggleService(this, 'Крио-уборка')">
+                    <div class="service-icon" style="background: var(--gradient-3);">❄️</div>
+                    <h3 class="service-title">Крио-уборка</h3>
+                    <p class="service-desc">Зимний сервис с прогнозированием осадков и оперативным реагированием</p>
+                    <ul class="service-features">
+                        <li>Метео-аналитика</li>
+                        <li>Экопосыпка</li>
+                        <li>Срочный выезд 24/7</li>
+                    </ul>
+                    <div class="service-price">от 3 000 ₽ <span>/выезд</span></div>
+                </div>
+
+                <div class="service-card" onclick="toggleService(this, 'Zero Waste')">
+                    <div class="service-icon" style="background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);">♻️</div>
+                    <h3 class="service-title">Zero Waste Вывоз</h3>
+                    <p class="service-desc">Экологичный вывоз с сортировкой и переработкой 95% материалов</p>
+                    <ul class="service-features">
+                        <li>Раздельный сбор</li>
+                        <li>Компостирование</li>
+                        <li>Эко-сертификат</li>
+                    </ul>
+                    <div class="service-price">от 4 500 ₽ <span>/рейс</span></div>
+                </div>
+
+                <div class="service-card" onclick="toggleService(this, 'Smart Ландшафт')">
+                    <div class="service-icon" style="background: linear-gradient(135deg, #30cfd0 0%, #330867 100%);">🏡</div>
+                    <h3 class="service-title">Smart Ландшафт</h3>
+                    <p class="service-desc">Умное благоустройство с автополивом и IoT-датчиками</p>
+                    <ul class="service-features">
+                        <li>VR-проектирование</li>
+                        <li>Автополив IoT</li>
+                        <li>Солнечная подсветка</li>
+                    </ul>
+                    <div class="service-price">от 2 000 ₽ <span>/м²</span></div>
+                </div>
+
+                <div class="service-card" onclick="toggleService(this, 'Техно-парк')">
+                    <div class="service-icon" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">🚜</div>
+                    <h3 class="service-title">Техно-парк</h3>
+                    <p class="service-desc">Аренда электрической спецтехники с операторами-категориями</p>
+                    <ul class="service-features">
+                        <li>Эко-техника</li>
+                        <li>Профи-операторы</li>
+                        <li>Час/смена/месяц</li>
+                    </ul>
+                    <div class="service-price">от 2 500 ₽ <span>/час</span></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team -->
+
+v, [15.02.2026 21:41]
+<section class="team" id="team">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag" style="background: rgba(245, 158, 11, 0.1); color: var(--warning);">Команда</span>
+                <h2 class="section-title">20 профессионалов будущего</h2>
+                <p class="section-subtitle">Мультифункциональная команда с уникальными компетенциями и креативным подходом</p>
+            </div>
+
+            <div class="team-grid">
+                <!-- 1 -->
+                <div class="team-card">
+                    <div class="team-image" data-emoji="👨‍💼"></div>
+                    <div class="team-info">
+                        <h3 class="team-name">Борисов Семён Евгеньевич</h3>
+                        <div class="team-role">Chief Visionary Officer</div>
+                        <p class="team-desc">Генеральный директор и основатель. Стратегическое видение и трансформация индустрии.</p>
+                        <div class="team-tags">
+                            <span class="team-tag">#лидерство</span>
+                            <span class="team-tag">#стратегия</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 2 -->
+                <div class="team-card">
+                    <div class="team-image" data-emoji="👩‍🎨"></div>
+                    <div class="team-info">
+                        <h3 class="team-name">Волкова Артемида Сергеевна</h3>
+                        <div class="team-role">Art-менеджер ландшафта</div>
+                        <p class="team-desc">Создаёт living-art инсталляции. Сочетает природу с современным искусством.</p>
+                        <div class="team-tags">
+                            <span class="team-tag">#арт</span>
+                            <span class="team-tag">#дизайн</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 3 -->
+                <div class="team-card">
+                    <div class="team-image" data-emoji="👨‍💻"></div>
+                    <div class="team-info">
+                        <h3 class="team-name">Соколов Тимофей Андреевич</h3>
+                        <div class="team-role">Digital-арборист</div>
+                        <p class="team-desc">Специалист по 3D-моделированию деревьев и цифровой диагностике.</p>
+                        <div class="team-tags">
+                            <span class="team-tag">#технологии</span>
+                            <span class="team-tag">#3D</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 4 -->
+                <div class="team-card">
+                    <div class="team-image" data-emoji="👩‍🔬"></div>
+                    <div class="team-info">
+                        <h3 class="team-name">Лебедева Инга Павловна</h3>
+                        <div class="team-role">Био-инженер почв</div>
+                        <p class="team-desc">Разрабатывает микробиологические решения для оздоровления грунтов.</p>
+                        <div class="team-tags">
+                            <span class="team-tag">#наука</span>
+                            <span class="team-tag">#экология</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 5 -->
+                <div class="team-card">
+                    <div class="team-image" data-emoji="👨‍🚀"></div>
+                    <div class="team-info">
+                        <h3 class="team-name">Кузнецов Марк Дмитриевич</h3>
+                        <div class="team-role">Пилот дронов-агрономов</div>
+                        <p class="team-desc">Управляет флотом дронов для мониторинга и точечной обработки территорий.</p>
+                        <div class="team-tags">
+                            <span class="team-tag">#дроны</span>
+                            <span class="team-tag">#IoT</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 6 -->
+
+v, [15.02.2026 21:41]
+<div class="team-card">
+                    <div class="team-image" data-emoji="👩‍🌾"></div>
+                    <div class="team-info">
+                        <h3 class="team-name">Семёнова Злата Игоревна</h3>
+                        <div class="team-role">Агро-стилист</div>
+                        <p class="team-desc">Создаёт эстетические композиции из живых растений и вертикальных садов.</p>
+                        <div class="team-tags">
+                            <span class="team-tag">#стиль</span>
+                            <span class="team-tag">#фитодизайн</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 7 -->
+                <div class="team-card">
+                    <div class="team-image" data-emoji="👨‍🔧"></div>
+                    <div class="team-info">
+                        <h3 class="team-name">Попов Ярослав Викторович</h3>
+                        <div class="team-role">Мехатроник зелёных систем</div>
+                        <p class="team-desc">Обслуживает роботизированные газонокосилки и автополивные системы.</p>
+                        <div class="team-tags">
+                            <span class="team-tag">#роботы</span>
+                            <span class="team-tag">#ремонт</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 8 -->
+                <div class="team-card">
+                    <div class="team-image" data-emoji="👩‍⚖️"></div>
+                    <div class="team-info">
+                        <h3 class="team-name">Васильева Алёна Романовна</h3>
+                        <div class="team-role">Eco-юрист</div>
+                        <p class="team-desc">Специалист по экологическому законодательству и зелёным сертификациям.</p>
+                        <div class="team-tags">
+                            <span class="team-tag">#право</span>
+                            <span class="team-tag">#экология</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 9 -->
+                <div class="team-card">
+                    <div class="team-image" data-emoji="👨‍🎤"></div>
+                    <div class="team-info">
+                        <h3 class="team-name">Петров Глеб Станиславович</h3>
+                        <div class="team-role">Бренд-амбассадор природы</div>
+                        <p class="team-desc">Коммуникации с клиентами и популяризация экологичного образа жизни.</p>
+                        <div class="team-tags">
+                            <span class="team-tag">#PR</span>
+                            <span class="team-tag">#коммуникации</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 10 -->
+                <div class="team-card">
+                    <div class="team-image" data-emoji="👩‍🏭"></div>
+                    <div class="team-info">
+                        <h3 class="team-name">Морозова Таисия Леонидовна</h3>
+                        <div class="team-role">Мастер переработки</div>
+                        <p class="team-desc">Организует Zero Waste процессы и круговую экономику отходов.</p>
+                        <div class="team-tags">
+                            <span class="team-tag">#переработка</span>
+                            <span class="team-tag">#zero waste</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 11 -->
+                <div class="team-card">
+                    <div class="team-image" data-emoji="👨‍🌾"></div>
+                    <div class="team-info">
+                        <h3 class="team-name">Волков Савелий Кириллович</h3>
+                        <div class="team-role">Альпинист-арборист</div>
+                        <p class="team-desc">Промышленный альпинист для работы на высоте со сложными деревьями.</p>
+                        <div class="team-tags">
+                            <span class="team-tag">#высота</span>
+
+v, [15.02.2026 21:41]
+<span class="team-tag">#безопасность</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 12 -->
+                <div class="team-card">
+                    <div class="team-image" data-emoji="👩‍💻"></div>
+                    <div class="team-info">
+                        <h3 class="team-name">Алексеева Яна Максимовна</h3>
+                        <div class="team-role">Data-аналитик садов</div>
+                        <p class="team-desc">Анализирует big data для прогнозирования роста растений и оптимизации ухода.</p>
+                        <div class="team-tags">
+                            <span class="team-tag">#данные</span>
+                            <span class="team-tag">#аналитика</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 13 -->
+                <div class="team-card">
+                    <div class="team-image" data-emoji="👨‍🔬"></div>
+                    <div class="team-info">
+                        <h3 class="team-name">Сергеев Артём Платонович</h3>
+                        <div class="team-role">Крио-инженер</div>
+                        <p class="team-desc">Разрабатывает инновационные методы зимнего благоустройства и снегоуборки.</p>
+                        <div class="team-tags">
+                            <span class="team-tag">#инновации</span>
+                            <span class="team-tag">#зима</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 14 -->
+                <div class="team-card">
+                    <div class="team-image" data-emoji="👩‍🎨"></div>
+                    <div class="team-info">
+                        <h3 class="team-name">Егорова Полина Андреевна</h3>
+                        <div class="team-role">UX-дизайнер территорий</div>
+                        <p class="team-desc">Проектирует user-friendly пространства с учётом поведенческих паттернов.</p>
+                        <div class="team-tags">
+                            <span class="team-tag">#UX</span>
+                            <span class="team-tag">#пространство</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 15 -->
+                <div class="team-card">
+                    <div class="team-image" data-emoji="👨‍⚕️"></div>
+                    <div class="team-info">
+                        <h3 class="team-name">Николаев Платон Артёмович</h3>
+                        <div class="team-role">Дендро-доктор</div>
+                        <p class="team-desc">Ветеринар для деревьев — диагностика болезней и лечение растений.</p>
+                        <div class="team-tags">
+                            <span class="team-tag">#медицина</span>
+                            <span class="team-tag">#деревья</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 16 -->
+                <div class="team-card">
+                    <div class="team-image" data-emoji="👩‍🔧"></div>
+                    <div class="team-info">
+                        <h3 class="team-name">Орлова Есения Дамировна</h3>
+                        <div class="team-role">Инженер автополива</div>
+                        <p class="team-desc">Проектирует умные системы орошения с датчиками влажности и погодными станциями.</p>
+                        <div class="team-tags">
+                            <span class="team-tag">#IoT</span>
+                            <span class="team-tag">#вода</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 17 -->
+                <div class="team-card">
+                    <div class="team-image" data-emoji="👨‍🌾"></div>
+                    <div class="team-info">
+                        <h3 class="team-name">Соловьёв Мирон Тихонович</h3>
+                        <div class="team-role">Миколог-ландшафтник</div>
+
+v, [15.02.2026 21:41]
+<p class="team-desc">Специалист по микоризным сетям и грибным решениям для почв.</p>
+                        <div class="team-tags">
+                            <span class="team-tag">#грибы</span>
+                            <span class="team-tag">#почва</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 18 -->
+                <div class="team-card">
+                    <div class="team-image" data-emoji="👩‍💼"></div>
+                    <div class="team-info">
+                        <h3 class="team-name">Козлова Вероника Ильинична</h3>
+                        <div class="team-role">Куратор проектов</div>
+                        <p class="team-desc">Agile-менеджер, координирует команды и обеспечивает сроки и качество.</p>
+                        <div class="team-tags">
+                            <span class="team-tag">#менеджмент</span>
+                            <span class="team-tag">#agile</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 19 -->
+                <div class="team-card">
+                    <div class="team-image" data-emoji="👨‍🔬"></div>
+                    <div class="team-info">
+                        <h3 class="team-name">Виноградов Тихон Захарович</h3>
+                        <div class="team-role">Фито-террапевт</div>
+                        <p class="team-desc">Использует растения для оздоровления городской среды и воздуха.</p>
+                        <div class="team-tags">
+                            <span class="team-tag">#здоровье</span>
+                            <span class="team-tag">#фито</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 20 -->
+                <div class="team-card">
+                    <div class="team-image" data-emoji="👩‍🚀"></div>
+                    <div class="team-info">
+                        <h3 class="team-name">Белова София Адамовна</h3>
+                        <div class="team-role">Оператор БПЛА-агроном</div>
+                        <p class="team-desc">Управляет дронами-опрыскивателями и картографирует территории.</p>
+                        <div class="team-tags">
+                            <span class="team-tag">#дроны</span>
+                            <span class="team-tag">#карты</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Order -->
+    <section class="order" id="order">
+        <div class="container">
+            <div class="order-container">
+                <div class="order-info">
+                    <span class="section-tag">Заявка</span>
+                    <h3>Начнём проект прямо сейчас</h3>
+                    <p style="color: var(--text-light); margin-bottom: 32px; font-size: 1.1rem;">
+                        Заполните форму — мы свяжемся в течение 2 часов для уточнения деталей и подготовки коммерческого предложения.
+                    </p>
+                    
+                    <ul class="benefit-list">
+                        <li>Бесплатный выезд специалиста на объект</li>
+                        <li>3D-визуализация проекта до начала работ</li>
+                        <li>Фиксированная цена без скрытых платежей</li>
+                        <li>Гарантия 2 года на все виды работ</li>
+                        <li>Эко-сертификат по завершению проекта</li>
+                    </ul>
+
+                    <div style="background: white; padding: 24px; border-radius: 16px; box-shadow: var(--shadow);">
+                        <h4 style="margin-bottom: 16px; color: var(--primary);">Контакты для связи</h4>
+                        <p style="margin-bottom: 8px;">📞 <a href="tel:+78001234567" style="color: var(--accent); text-decoration: none; font-weight: 600;">8 (800) 123-45-67</a></p>
+                        <p style="margin-bottom: 8px;">💬 Telegram: <a href="https://t.
+
+v, [15.02.2026 21:41]
+me/yaporyadok" style="color: var(--accent); text-decoration: none;">@yaporyadok</a></p>
+                        <p>📍 г. Казань, ул. Аделя Кутуя, д. 108, оф. 1</p>
+                    </div>
+                </div>
+
+                <div class="order-form-wrapper">
+                    <form id="orderForm" onsubmit="submitForm(event)">
+                        <div class="selected-services" id="selectedServices">
+                            <div class="selected-title">✓ Выбранные услуги:</div>
+                            <div class="selected-list" id="selectedList"></div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>Ваше имя *</label>
+                                <input type="text" name="name" required placeholder="Иван Иванов">
+                            </div>
+                            <div class="form-group">
+                                <label>Телефон *</label>
+                                <input type="tel" name="phone" required placeholder="+7 (999) 123-45-67">
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>Email</label>
+                                <input type="email" name="email" placeholder="example@mail.ru">
+                            </div>
+                            <div class="form-group">
+                                <label>Telegram</label>
+                                <input type="text" name="telegram" placeholder="@username">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Адрес объекта *</label>
+                            <input type="text" name="address" required placeholder="г. Казань, ул. Примерная, д. 1">
+                        </div>
+
+                        <div class="form-group">
+                            <label>Описание проекта</label>
+                            <textarea name="description" placeholder="Расскажите о вашем проекте: площадь, особенности, сроки..."></textarea>
+                        </div>
+
+                        <button type="submit" class="btn btn-accent" style="width: 100%; justify-content: center; padding: 16px;">
+                            Отправить заявку →
+                        </button>
+
+                        <div class="success-message" id="successMessage">
+                            <h3 style="font-size: 1.5rem; margin-bottom: 8px;">✓ Заявка отправлена!</h3>
+                            <p>Мы свяжемся с вами в ближайшее время.</p>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Requisites -->
+    <section class="requisites" id="requisites">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag" style="background: rgba(16, 185, 129, 0.1); color: var(--accent-dark);">Юридическая информация</span>
+                <h2 class="section-title">Реквизиты компании</h2>
+                <p class="section-subtitle">Официальные данные ООО «Я-ПОРЯДОК»</p>
+            </div>
+
+            <div class="req-grid">
+                <div class="req-card">
+                    <div class="req-label">Полное наименование</div>
+                    <div class="req-value">ООО «Я-ПОРЯДОК»</div>
+                </div>
+                <div class="req-card">
+                    <div class="req-label">ОГРН</div>
+                    <div class="req-value">1171690091100</div>
+                </div>
+                <div class="req-card">
+                    <div class="req-label">ИНН</div>
+                    <div class="req-value">1657240096</div>
+                </div>
+                <div class="req-card">
+                    <div class="req-label">КПП</div>
+                    <div class="req-value">166001001</div>
+                </div>
+
+v, [15.02.2026 21:41]
+<div class="req-card">
+                    <div class="req-label">ОКПО</div>
+                    <div class="req-value">19395219</div>
+                </div>
+                <div class="req-card">
+                    <div class="req-label">Дата регистрации</div>
+                    <div class="req-value">31 августа 2017</div>
+                </div>
+                <div class="req-card" style="grid-column: 1 / -1;">
+                    <div class="req-label">Юридический адрес</div>
+                    <div class="req-value">420073, Республика Татарстан, г. Казань, ул. Аделя Кутуя, д. 108, офис 1</div>
+                </div>
+                <div class="req-card">
+                    <div class="req-label">Уставный капитал</div>
+                    <div class="req-value">20 000 ₽</div>
+                </div>
+                <div class="req-card">
+                    <div class="req-label">Руководитель</div>
+                    <div class="req-value">Борисов С.Е. (с 2018 г.)</div>
+                </div>
+                <div class="req-card">
+                    <div class="req-label">Статус</div>
+                    <div class="req-value">Действующая компания</div>
+                </div>
+                <div class="req-card">
+                    <div class="req-label">Категория МСП</div>
+                    <div class="req-value">Микропредприятие</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer" id="contacts">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <div class="logo-text" style="display: flex; align-items: center; gap: 12px; margin-bottom: 20px;">
+                        <span style="font-size: 2rem;">🌿</span>
+                        Я-ПОРЯДОК
+                    </div>
+                    <p>Инновационная компания по благоустройству территорий. Сочетаем природу и технологии для создания комфортной среды.</p>
+                    <div class="footer-social">
+                        <a href="#" class="social-link">📱</a>
+                        <a href="#" class="social-link">✈️</a>
+                        <a href="#" class="social-link">📧</a>
+                        <a href="#" class="social-link">🌐</a>
+                    </div>
+                </div>
+
+                <div>
+                    <h4 class="footer-title">Услуги</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">Арбористика 2.0</a></li>
+                        <li><a href="#">Гео-газоны</a></li>
+                        <li><a href="#">Крио-уборка</a></li>
+                        <li><a href="#">Smart Ландшафт</a></li>
+                        <li><a href="#">Zero Waste</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="footer-title">Компания</h4>
+                    <ul class="footer-links">
+                        <li><a href="#team">Команда</a></li>
+                        <li><a href="#about">О нас</a></li>
+                        <li><a href="#requisites">Реквизиты</a></li>
+                        <li><a href="#">Вакансии</a></li>
+                        <li><a href="#">Блог</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-contact">
+                    <h4 class="footer-title">Контакты</h4>
+                    <p>📍 г. Казань, ул. Аделя Кутуя, 108</p>
+                    <p>📞 8 (800) 123-45-67</p>
+                    <p>✉️ info@ya-poryadok.ru</p>
+                    <p>💬 @yaporyadok</p>
+                    <p style="margin-top: 16px; color: var(--accent);">🚀 Экстренные выезды 24/7</p>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>© 2017-2025 ООО «Я-ПОРЯДОК». Все права защищены.</p>
+                <p>ИНН 1657240096 | ОГРН 1171690091100 | Микропредприятие</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Header scroll effect
+        window.
+
+v, [15.02.2026 21:41]
+addEventListener('scroll', () => {
+            const header = document.getElementById('header');
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // Services selection
+        let selectedServices = [];
+        
+        function toggleService(card, serviceName) {
+            card.classList.toggle('selected');
+            
+            if (selectedServices.includes(serviceName)) {
+                selectedServices = selectedServices.filter(s => s !== serviceName);
+            } else {
+                selectedServices.push(serviceName);
+            }
+            
+            updateSelectedDisplay();
+        }
+        
+        function updateSelectedDisplay() {
+            const container = document.getElementById('selectedServices');
+            const list = document.getElementById('selectedList');
+            
+            if (selectedServices.length > 0) {
+                container.classList.add('active');
+                list.innerHTML = selectedServices.map(s => 
+                    <span class="selected-tag">${s}</span>
+                ).join('');
+            } else {
+                container.classList.remove('active');
+            }
+        }
+
+        // Form submission
+        function submitForm(e) {
+            e.preventDefault();
+            
+            const formData = new FormData(e.target);
+            const data = Object.fromEntries(formData);
+            data.services = selectedServices;
+            
+            console.log('Form data:', data);
+            
+            document.getElementById('successMessage').classList.add('active');
+            e.target.reset();
+            
+            selectedServices = [];
+            document.querySelectorAll('.service-card.selected').forEach(card => {
+                card.classList.remove('selected');
+            });
+            updateSelectedDisplay();
+            
+            setTimeout(() => {
+                document.getElementById('successMessage').classList.remove('active');
+            }, 5000);
+        }
+
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
